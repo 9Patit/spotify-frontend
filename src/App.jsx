@@ -1,13 +1,16 @@
-import Login from "./component/dthjr";
-
-
-
+import Login from "./component/Login";
+import Dashboard from "./component/Dashboard";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
-  return(
-    <Login />
-
+  const code = new URLSearchParams(window.location.search).get("code");
+  if (!code) return <Login />;
+  
+  return (
+    <AuthProvider>
+      <Dashboard code={code} />
+    </AuthProvider>
   )
+  
 }
-
 export default App;
