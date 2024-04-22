@@ -1,5 +1,6 @@
 import useAuth from "../hook/useAuth";
 import Content from "./Content";
+import Player from "./Player";
 import Sidebar from "./Sidebar";
 import { useState } from "react";
 
@@ -21,7 +22,7 @@ const Dashboard = ({ code }) => {
           <Content status={status} />
         </div>
       </div>
-      <div><p>player</p></div>
+      <div><Player/></div>
     </div>
   );
 };
