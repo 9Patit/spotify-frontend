@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { PlaylistContext } from "../context/PlaylistContext";
 import { useAuthContext } from "../hook/useAuthContext";
 import axios from "axios";
-// import { TrackContext } from "../context/TrackContext";
+import { TrackContext } from "../context/TrackContext";
 
 const Playlistdisplay = () => {
   const { playlist } = useContext(PlaylistContext);
@@ -10,7 +10,7 @@ const Playlistdisplay = () => {
   const { refreshToken } = useAuthContext();
   const [accessToken, setAccessToken] = useState(null);
   const [tracks, setTracks] = useState(null);
-//   const { setTrack } = useContext(TrackContext);
+  const { setTrack } = useContext(TrackContext);
   const [searchTerm, setSearchTerm] = useState("");
   const minutes = (milliseconds) => {
     const totalSeconds = milliseconds / 1000;
@@ -134,7 +134,7 @@ const Playlistdisplay = () => {
                 key={index}
                 className=" cursor-pointer hover:bg-[#2A2A2A]"
                 onClick={() => {
-                //   setTrack(trackData.track.id);
+                  setTrack(trackData.track.id);
                 }}
               >
                 <td>{index + 1}</td>

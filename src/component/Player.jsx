@@ -1,7 +1,8 @@
-
+import { useContext } from "react";
+import { TrackContext } from "../context/TrackContext";
 
 const Player = () => {
-    const track = "234"
+  const {track} = useContext(TrackContext);
   return (
     <section className="mt-[5px]  " >
       <iframe

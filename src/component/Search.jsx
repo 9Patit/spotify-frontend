@@ -1,13 +1,15 @@
-import { useState,useEffect } from "react";
+import { useState,useEffect,useContext } from "react";
 import { useAuthContext } from "../hook/useAuthContext";
 import axios from "axios";
+import { TrackContext } from "../context/TrackContext";
 
 
 const Search = () => {
     const { refreshToken } = useAuthContext();
-    console.log('refreshToken--------------------------------------มานะ',refreshToken);
+    // console.log('refreshToken--------------------------------------มานะ',refreshToken);
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
+    const {setTrack} = useContext(TrackContext);
     const minutes = (milliseconds) => {
       // แปลง milliseconds เป็นนาทีและวินาที
       const totalSeconds = milliseconds / 1000;
@@ -77,7 +79,9 @@ const Search = () => {
             <tr 
             key={index} 
             className=" cursor-pointer hover:bg-[#2A2A2A]" 
-            >
+            onClick={() => {
+              setTrack(track.id);
+            }}>
               <td>{index + 1}</td>
               <td>{track.name}</td>
               <td>{track.album.name}</td>

@@ -2,6 +2,7 @@ import Login from "./component/Login";
 import Dashboard from "./component/Dashboard";
 import { AuthProvider } from "./context/AuthContext";
 import { PlaylistProvider } from "./context/PlaylistContext";
+import { TrackProvider } from "./context/TrackContext";
 
 function App() {
   const code = new URLSearchParams(window.location.search).get("code");
@@ -10,7 +11,9 @@ function App() {
   return (
     <AuthProvider>
       <PlaylistProvider>
-        <Dashboard code={code} />
+        <TrackProvider>
+          <Dashboard code={code} />
+        </TrackProvider>
       </PlaylistProvider>
     </AuthProvider>
   );
