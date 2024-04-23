@@ -68,27 +68,31 @@ const Library = ({ handlePlaylist }) => {
         }
       };
 
-      const deletePlaylist = async (playlistId) => {
-        // try {
-        //   const responseRefresh = await axios.post(
-        //     "http://localhost:3001/refresh",
-        //     {
-        //       refreshToken,
-        //     }
-        //   );
-        //   const accessToken = responseRefresh.data.accessToken;
+      // const deletePlaylist = async (playlistId) => {
+      //   try {
+      //     const responseRefresh = await axios.post(
+      //       "http://localhost:3001/refresh",
+      //       {
+      //         refreshToken,
+      //       }
+      //     );
+      //     const accessToken = responseRefresh.data.accessToken;
     
-        //   await axios.delete(`https://api.spotify.com/v1/playlists/${playlistId}`, {
-        //     headers: {
-        //       Authorization: `Bearer ${accessToken}`,
-        //     },
-        //   });
-        //   refreshPlaylist();
-        // } catch (error) {
-        //   console.error("Error deleting playlist:", error);
-        // }
-        console.log("ลบไม่ได้ Status405 เลยยังลบplaylistId:",playlistId,"นี้ไม่ได้");
-      };
+      //     await axios.delete(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+      //       headers: {
+      //         Authorization: `Bearer ${accessToken}`,
+      //       },
+      //     });
+      //     refreshPlaylist();
+      //   } catch (error) {
+      //     console.error("Error deleting playlist:", error);
+      //   }
+      //   console.log("ลบไม่ได้ Status405 เลยยังลบplaylistId:",playlistId,"นี้ไม่ได้");
+      // };
+      const deletePlaylist = (playlistId) => {
+        console.log("จะลบPlaylistที่มีID:",playlistId);
+
+      }
 
 
   return (
@@ -97,7 +101,7 @@ const Library = ({ handlePlaylist }) => {
         <span>library</span>
         <button
           type="button"          
-          className="flex justify-center item-center h-[30px] p-0 w-[30px]  ml-[100px] rounded-full"
+          className="flex justify-center item-center h-[30px] p-0 w-[30px]  ml-[230px] rounded-full"
           onClick={() => setAddPlaylist(true)}
         >
           +
