@@ -2,8 +2,7 @@
 
 const Mainpage = () => {
   return (
-    <div className="flex items-center justify-center h-full text-zinc-400">
-      
+    <div className="flex items-center justify-center h-full text-zinc-400">      
       <main className="p-[1rem] flex flex-col gap-y-[1rem]">
         <h1 className="text-[2rem]">Welcome to spotify clone</h1>
         <div>How to play this project </div>
@@ -19,23 +18,22 @@ const Mainpage = () => {
           <li className="flex py-[0.1rem]">
             <span className="w-[100px]"></span> <span>- play a song</span>
           </li>
-          <li className="flex py-[0.1rem]">
-            <span className="w-[100px]"></span> <span>- create a new playlist</span>
-          </li>
+          
           <li className="flex py-[0.1rem]">
             <span className="w-[100px]"></span>{" "}
             <span>- save song to playlist you want</span>
           </li>
           <li className="flex py-[0.1rem]">
             <span className="w-[100px]">Your Library</span>{" "}
-            <span>- reload playlist</span>
+            <span>- show your playlists</span>            
           </li>
+          
           <li className="flex py-[0.1rem]">
             <span className="w-[100px]"></span>{" "}
-            <span>- create a new playlist &amp; define name of playlist</span>
+            <span>- create a new playlist &amp; delete playlist</span>
           </li>
           <li className="flex py-[0.1rem]">
-            <span className="w-[100px]">Playlist card</span>{" "}
+            <span className="w-[100px]">Playlist </span>{" "}
             <span>- play a song</span>
           </li>
           <li className="flex py-[0.1rem]">
