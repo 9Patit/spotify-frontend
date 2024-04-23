@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuthContext } from "../hook/useAuthContext";
 
 // eslint-disable-next-line react/prop-types
-function Addtoplaylist({selectedTrack,selectedTrackId}) {
+function Addtoplaylist({selectedTrack,selectedTrackId,onClose}) {
   const [playlists, setPlaylists] = useState(null);
   const { refreshToken } = useAuthContext();
   const [playlistId,setPlaylistsID] = useState("")
@@ -69,12 +69,14 @@ useEffect(() => {
             },
           }
         );
-        alert(`Add ${selectedTrack} to playlist Successful`);
+        // alert(`Add ${selectedTrack} to playlist Successful`);
+        onClose();
       
       setPlaylists(response.data);
        
     } catch (error) {
-      console.error("เกิดข้อผิดพลาด:", error);
+      console.error("เกิดข้อผิดพลาดกรุณาลองใหม่ภายหลัง:", error);
+      onClose();
     }
   };
 
@@ -84,15 +86,14 @@ useEffect(() => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [playlistId, refreshToken]);
   
-
-
-
   return (
-    <div className="w-[360px] h-[200PX] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
+    <div className="w-100% h-[200PX] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
       <div className="text-xl flex flex-col justify-between item-center h-[30px]">
         <div>
           <span>add {selectedTrack} to playlist</span>
         </div>
+        <hr />
+        <br />
 
         {playlists && playlists.items && (
           <div>

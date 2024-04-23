@@ -8,8 +8,7 @@ import { PlaylistContext } from "../context/PlaylistContext";
 const Library = ({ handlePlaylist }) => {
   const { refreshToken } = useAuthContext();
   const [playlists, setPlaylists] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [addplaylist, setAddPlaylist] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);  
   const { setPlaylist } = useContext(PlaylistContext);
 
   useEffect(() => {
@@ -115,7 +114,7 @@ const Library = ({ handlePlaylist }) => {
   };
 
   return (
-    <div className="w-[360px] h-[300px] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
+    <div className="w-[360px] h-[297px] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
       <div className="text-xl flex justify-between item-center h-[30px]">
         <span>library</span>
         <button
@@ -128,11 +127,9 @@ const Library = ({ handlePlaylist }) => {
 
         {isModalOpen && (
           <div className="modal">            
-            <Playlist
-              // addplaylist={addplaylist}
+            <Playlist              
               onClose={() => {
-                closeModal();
-                // setAddPlaylist(false);
+                closeModal();                
                 refreshPlaylist();
               }}
             />

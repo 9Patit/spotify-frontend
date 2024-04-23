@@ -4,14 +4,14 @@ import axios from "axios";
 import { TrackContext } from "../context/TrackContext";
 import Addtoplaylist from "./Addtoplaylist";
 
-
 const Search = () => {
   const { refreshToken } = useAuthContext();
   // console.log('refreshToken--------------------------------------มานะ',refreshToken);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const { setTrack } = useContext(TrackContext);
-  const [showAddToPlaylist, setShowAddToPlaylist] = useState(false);
+  // const [showAddToPlaylist, setShowAddToPlaylist] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState("");
   const [selectedTrackId, setSelectedTrackId] = useState("");
   const minutes = (milliseconds) => {
@@ -56,6 +56,10 @@ const Search = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchTerm]);
 
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className=" m-[10px] ">
       <input
@@ -94,7 +98,7 @@ const Search = () => {
                 <button
                   className=" flex justify-center item-center h-[30px] p-0 w-[30px]  ml-[100px] rounded-full bg-[#121212]"
                   onClick={() => {
-                    setShowAddToPlaylist(true);
+                    setIsModalOpen(true);
                     setSelectedTrack(track.name);
                     setSelectedTrackId(track.id);
                   }}
@@ -107,10 +111,18 @@ const Search = () => {
         </tbody>
       </table>
 
-      {showAddToPlaylist && <Addtoplaylist 
-      selectedTrack={selectedTrack} 
-      selectedTrackId={selectedTrackId}     
-      />}
+      {isModalOpen && (
+        <div className="modal">
+          <Addtoplaylist
+            selectedTrack={selectedTrack}
+            selectedTrackId={selectedTrackId}
+            onClose={() => {
+              closeModal();
+              
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };

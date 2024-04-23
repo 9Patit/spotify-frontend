@@ -17,7 +17,7 @@ const Navbar = ({ setStatus }) => {
 
   return (
     <div>
-      <div className="w-[360px] h-[112px] bg-[#121212] flex flex-col rounded-md ">      
+      <div className="w-[360px] h-[115px] bg-[#121212] flex flex-col rounded-md ">      
         <ul className="text-[#A7A7A7]  flex flex-col  justify-center h-full ">
           <div className="flex flex-col">
             <button type="button" className="text-left" onClick={handleMain}>
