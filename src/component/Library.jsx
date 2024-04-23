@@ -1,16 +1,17 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useContext } from "react";
 import { useAuthContext } from "../hook/useAuthContext";
 import Playlist from "./Playlist";
+import { PlaylistContext } from "../context/PlaylistContext";
 
 
-
-
-
-const Library = () => {
+// eslint-disable-next-line react/prop-types
+const Library = ({ handlePlaylist }) => {
     const { refreshToken } = useAuthContext();
     const [playlists, setPlaylists] = useState(null);
     const [addplaylist, setAddPlaylist] = useState(false);
+    const { setPlaylist } = useContext(PlaylistContext);
+
 
     useEffect(() => {
         const fetchPlaylist = async () => {
@@ -67,6 +68,28 @@ const Library = () => {
         }
       };
 
+      const deletePlaylist = async (playlistId) => {
+        // try {
+        //   const responseRefresh = await axios.post(
+        //     "http://localhost:3001/refresh",
+        //     {
+        //       refreshToken,
+        //     }
+        //   );
+        //   const accessToken = responseRefresh.data.accessToken;
+    
+        //   await axios.delete(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+        //     headers: {
+        //       Authorization: `Bearer ${accessToken}`,
+        //     },
+        //   });
+        //   refreshPlaylist();
+        // } catch (error) {
+        //   console.error("Error deleting playlist:", error);
+        // }
+        console.log("ลบไม่ได้ Status405 เลยยังลบplaylistId:",playlistId,"นี้ไม่ได้");
+      };
+
 
   return (
     <div className="w-[360px] h-[300px] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
@@ -95,8 +118,8 @@ const Library = () => {
               key={item.id}
               className=" cursor-pointer hover:bg-[#2A2A2A] "
               onClick={() => {
-                // setPlaylist(JSON.parse(JSON.stringify(item)));
-                // handlePlaylist();
+                setPlaylist(JSON.parse(JSON.stringify(item)));
+                handlePlaylist();
               }}
             >
               <div className=" flex justify-between">
@@ -112,7 +135,7 @@ const Library = () => {
                   item-center h-[30px] 
                   p-0 w-[30px]  ml-[100px]
                   rounded-full bg-[#121212]"
-                //   onClick={() => deletePlaylist(item.id)}
+                  onClick={() => deletePlaylist(item.id)}
                   >
                     -
                   </button>

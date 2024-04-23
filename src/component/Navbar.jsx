@@ -11,6 +11,10 @@ const Navbar = ({ setStatus }) => {
     setStatus("Search");
   };
 
+  const handlePlaylist = () => {
+    setStatus("Playlist");
+  };
+
   return (
     <div>
       <div className="w-[360px] h-[112px] bg-[#121212] flex flex-col rounded-md ">      
@@ -28,7 +32,7 @@ const Navbar = ({ setStatus }) => {
         </ul>
       </div>
       <div>
-        <Library/>
+        <Library handlePlaylist={handlePlaylist}/>
       </div>
     </div>
   );
