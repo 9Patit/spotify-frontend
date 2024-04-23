@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../hook/useAuthContext";
 
 // eslint-disable-next-line react/prop-types
-const Playlist = ({ addplaylist, onClose }) => {
+const Playlist = ({ onClose }) => {
   const { refreshToken } = useAuthContext();
   const [playlistName, setPlaylistName] = useState("");
   const [accessToken, setAccessToken] = useState("");
@@ -66,24 +66,24 @@ const Playlist = ({ addplaylist, onClose }) => {
   };
 
   return (
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className={`${addplaylist ? "visible:bg-black" : "invisible"}`}
-    >
-      {addplaylist && (
-        <>
-          <div className="h-[35px] w-full  flex justify-between ">
-            <input
-              type="text"
-              placeholder="Name"
-              value={playlistName}
-              onChange={handleInputChange}
-              className="h-full bg-[#2A2A2A] w-[70%] rounded-lg"
-            />
-            <button onClick={handleConfirm} className="h-full bg-[#2A2A2A] flex items-center">ตกลง</button>
-          </div>
-        </>
-      )}
+    <div>
+      <h2>Create Playlist</h2>
+      <br />
+      <div className=" flex ">
+        <input
+          type="text"
+          placeholder="Playlist Name?"
+          value={playlistName}
+          onChange={handleInputChange}
+          className="h-full bg-[#2A2A2A] w-[60%] rounded-lg"
+        />
+        <button
+          onClick={handleConfirm}
+          className="h-[30px] bg-[#2A2A2A] flex items-center ml-[10px]"
+        >
+          ตกลง
+        </button>
+      </div>
     </div>
   );
 };

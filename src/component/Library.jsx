@@ -8,7 +8,8 @@ import { PlaylistContext } from "../context/PlaylistContext";
 const Library = ({ handlePlaylist }) => {
   const { refreshToken } = useAuthContext();
   const [playlists, setPlaylists] = useState(null);
-  const [addplaylist, setAddPlaylist] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [addplaylist, setAddPlaylist] = useState(false);
   const { setPlaylist } = useContext(PlaylistContext);
 
   useEffect(() => {
@@ -86,11 +87,11 @@ const Library = ({ handlePlaylist }) => {
   //   console.log("ลบไม่ได้ Status405 เลยยังลบplaylistId:",playlistId,"นี้ไม่ได้");
   // };
   const deletePlaylist = (playlistId) => {
-    console.log("จะลบPlaylistที่มีID:", playlistId);
+    // console.log("จะลบPlaylistที่มีID:", playlistId);
     const foundPlaylist = playlists.items.find(
       (item) => item.id === playlistId
     );
-    if (foundPlaylist) {      
+    if (foundPlaylist) {
       // สร้างรายการใหม่โดยไม่รวม playlist ที่ต้องการลบ
       const updatedPlaylists = playlists.items.filter(
         (item) => item.id !== playlistId
@@ -105,6 +106,14 @@ const Library = ({ handlePlaylist }) => {
     }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className="w-[360px] h-[300px] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
       <div className="text-xl flex justify-between item-center h-[30px]">
@@ -112,18 +121,23 @@ const Library = ({ handlePlaylist }) => {
         <button
           type="button"
           className="flex justify-center item-center h-[30px] p-0 w-[30px]  ml-[230px] rounded-full"
-          onClick={() => setAddPlaylist(true)}
+          onClick={openModal}
         >
           +
         </button>
 
-        <Playlist
-          addplaylist={addplaylist}
-          onClose={() => {
-            setAddPlaylist(false);
-            refreshPlaylist();
-          }}
-        />
+        {isModalOpen && (
+          <div className="modal">            
+            <Playlist
+              // addplaylist={addplaylist}
+              onClose={() => {
+                closeModal();
+                // setAddPlaylist(false);
+                refreshPlaylist();
+              }}
+            />
+          </div>
+        )}
       </div>
       {playlists && playlists.items && (
         <div className="pt-3 overflow-y-auto max-h-96">
