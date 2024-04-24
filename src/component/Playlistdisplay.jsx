@@ -105,7 +105,7 @@ const Playlistdisplay = () => {
 
         <div className="flex flex-grow justify-end">
           {playlist ? (
-            <h2 className="text-[#A7A7A7] ml-[30px]">{playlist.name}</h2>
+            <h2 className="text-[#A7A7A7] ml-[20px] mr-[80px] mt-2">{playlist.name}</h2>
           ) : (
             <h2>.....</h2>
           )}
@@ -125,97 +125,54 @@ const Playlistdisplay = () => {
           </tr>
         </thead>
 
-        {/* {tracks &&
-          tracks.map((trackData, index) =>
-         //  searchTerm && trackData.track.name.toLowerCase() === searchTerm.toLowerCase()) || !searchTerm ?
-        //  !searchTerm || trackData.track.name.toLowerCase().includes(searchTerm.toLowerCase())) && 
-            (searchTerm && trackData.track.name.toLowerCase() === searchTerm.toLowerCase()) || !searchTerm ?  (
-              <tr
-                key={index}
-                className=" cursor-pointer hover:bg-[#2A2A2A]"
-                onClick={() => {
-                  setTrack(trackData.track.id);
-                }}
-              >
-                <td>{index + 1}</td>
-                <td>
-                <div className="flex">
-                  <div className=" w-[40px] mt-[5px]">
-                    <img
-                      className="rounded-md"
-                      src={trackData.track.album.images[0].url}
-                      alt={trackData.track.album.name}
-                    />
-                  </div>
-                  <div className="ml-[10px]">
-                    <div>{trackData.track.name}</div>
-                    {trackData.track.artists.map((artist, index) => (
-                      <span key={index}>{artist.name}</span>
-                    ))}
-                  </div>
-                </div>
-              </td>                
-                <td>{trackData.track.album.name}</td>
-                <td>{minutes(trackData.track.duration_ms)}</td>
-                <td>
-                  <button
-                    className="
+        {tracks &&
+          tracks.map(
+            (trackData, index) =>
+              (!searchTerm ||
+                trackData.track.name
+                  .toLowerCase()
+                  .includes(searchTerm.toLowerCase())) && (
+                <tr
+                  key={index}
+                  className="cursor-pointer hover:bg-[#2A2A2A]"
+                  onClick={() => {
+                    setTrack(trackData.track.id);
+                  }}
+                >
+                  <td>{index + 1}</td>
+                  <td>
+                    <div className="flex">
+                      <div className="w-[40px] mt-[5px]">
+                        <img
+                          className="rounded-md"
+                          src={trackData.track.album.images[0].url}
+                          alt={trackData.track.album.name}
+                        />
+                      </div>
+                      <div className="ml-[10px]">
+                        <div>{trackData.track.name}</div>
+                        {trackData.track.artists.map((artist, index) => (
+                          <span key={index}>{artist.name}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </td>
+                  <td>{trackData.track.album.name}</td>
+                  <td>{minutes(trackData.track.duration_ms)}</td>
+                  <td>
+                    <button
+                      className="
               flex justify-center item-center 
               h-[30px] p-0 w-[30px]  ml-[100px] 
               rounded-full bg-[#121212]"
-                    onClick={() => deleteTrack(trackData.track.id)}
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-            ) : null
-          )} */}
-          {tracks &&
-  tracks.map((trackData, index) =>
-    (!searchTerm || trackData.track.name.toLowerCase().includes(searchTerm.toLowerCase())) && (
-      <tr
-        key={index}
-        className="cursor-pointer hover:bg-[#2A2A2A]"
-        onClick={() => {
-          setTrack(trackData.track.id);
-        }}
-      >
-        <td>{index + 1}</td>
-        <td>
-          <div className="flex">
-            <div className="w-[40px] mt-[5px]">
-              <img
-                className="rounded-md"
-                src={trackData.track.album.images[0].url}
-                alt={trackData.track.album.name}
-              />
-            </div>
-            <div className="ml-[10px]">
-              <div>{trackData.track.name}</div>
-              {trackData.track.artists.map((artist, index) => (
-                <span key={index}>{artist.name}</span>
-              ))}
-            </div>
-          </div>
-        </td>
-        <td>{trackData.track.album.name}</td>
-        <td>{minutes(trackData.track.duration_ms)}</td>
-        <td>
-          <button
-            className="
-              flex justify-center item-center 
-              h-[30px] p-0 w-[30px]  ml-[100px] 
-              rounded-full bg-[#121212]"
-            onClick={() => deleteTrack(trackData.track.id)}
-          >
-            -
-          </button>
-        </td>
-      </tr>
-    )
-  )}
-        
+                      onClick={() => deleteTrack(trackData.track.id)}
+                    >
+                      -
+                    </button>
+                  </td>
+                </tr>
+              )
+          )}
       </table>
     </div>
   );

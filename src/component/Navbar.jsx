@@ -24,7 +24,7 @@ const Navbar = ({ setStatus }) => {
               <i className="bi bi-house pr-[15px] text-[20px]"></i>Home
             </button>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-[5px]">
             <button  type="button" className="text-left" onClick={handleSearch}>
               <i className="bi bi-search pr-[15px] text-[20px]"></i> Search
             </button>
