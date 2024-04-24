@@ -1,7 +1,8 @@
 import Logo from "../img/Logo.png";
 
 const clientId = "e0e2d01268884c5c86bef49f2533af70";
-const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=http://localhost:5173&scope=streaming%20user-read-email%20playlist-modify-public%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
+const redirect_uri = "https://spotify-frontend-6zdvujwk7-gears-projects.vercel.app";
+const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirect_uri}&scope=streaming%20user-read-email%20playlist-modify-public%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 
 const Login = () => {
   return (
