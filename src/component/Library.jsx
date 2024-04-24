@@ -8,6 +8,7 @@ import { PlaylistContext } from "../context/PlaylistContext";
 const Library = ({ handlePlaylist }) => {
   const { refreshToken } = useAuthContext();
   const [playlists, setPlaylists] = useState(null);
+  console.log("ข้อมูลในPlaylist:",playlists);
   const [isModalOpen, setIsModalOpen] = useState(false);  
   const { setPlaylist } = useContext(PlaylistContext);
 

@@ -9,8 +9,8 @@ const Search = () => {
   // console.log('refreshToken--------------------------------------มานะ',refreshToken);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  console.log("ข้อมูลsearchResults", searchResults);
   const { setTrack } = useContext(TrackContext);
-  // const [showAddToPlaylist, setShowAddToPlaylist] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState("");
   const [selectedTrackId, setSelectedTrackId] = useState("");
@@ -91,7 +91,23 @@ const Search = () => {
               }}
             >
               <td>{index + 1}</td>
-              <td>{track.name}</td>
+              <td>
+                <div className="flex">
+                  <div className=" w-[40px] mt-[5px]">
+                    <img
+                      className="rounded-md"
+                      src={track.album.images[0].url}
+                      alt={track.album.name}
+                    />
+                  </div>
+                  <div className="ml-[10px]">
+                    <div>{track.name}</div>
+                    {track.artists.map((artist, index) => (
+                      <span key={index}>{artist.name}</span>
+                    ))}
+                  </div>
+                </div>
+              </td>
               <td>{track.album.name}</td>
               <td>{minutes(track.duration_ms)}</td>{" "}
               <td>
@@ -118,7 +134,6 @@ const Search = () => {
             selectedTrackId={selectedTrackId}
             onClose={() => {
               closeModal();
-              
             }}
           />
         </div>

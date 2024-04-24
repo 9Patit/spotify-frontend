@@ -138,7 +138,24 @@ const Playlistdisplay = () => {
                 }}
               >
                 <td>{index + 1}</td>
-                <td>{trackData.track.name}</td>
+                <td>
+                <div className="flex">
+                  <div className=" w-[40px] mt-[5px]">
+                    <img
+                      className="rounded-md"
+                      src={trackData.track.album.images[0].url}
+                      alt={trackData.track.album.name}
+                    />
+                  </div>
+                  <div className="ml-[10px]">
+                    <div>{trackData.track.name}</div>
+                    {trackData.track.artists.map((artist, index) => (
+                      <span key={index}>{artist.name}</span>
+                    ))}
+                  </div>
+                </div>
+              </td>
+                {/* <td>{trackData.track.name}</td> */}
                 <td>{trackData.track.album.name}</td>
                 <td>{minutes(trackData.track.duration_ms)}</td>
                 <td>
