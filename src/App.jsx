@@ -6,6 +6,7 @@ import { TrackProvider } from "./context/TrackContext";
 
 function App() {
   const code = new URLSearchParams(window.location.search).get("code");
+  console.log(code);
   if (!code) return <Login />;
 
   return (

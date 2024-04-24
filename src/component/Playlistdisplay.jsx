@@ -11,7 +11,7 @@ const Playlistdisplay = () => {
   const [accessToken, setAccessToken] = useState(null);
   const [tracks, setTracks] = useState(null);
   const { setTrack } = useContext(TrackContext);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");  
   const minutes = (milliseconds) => {
     const totalSeconds = milliseconds / 1000;
     const minutes = Math.floor(totalSeconds / 60);
