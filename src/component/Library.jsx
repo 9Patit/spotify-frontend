@@ -45,7 +45,7 @@ const Library = ({ handlePlaylist }) => {
   const refreshPlaylist = async () => {
     try {
       const responseRefresh = await axios.post(
-        "https://spotify-server-1.onrender.com/refresh",
+        "http://localhost:3001/refresh",
         {
           refreshToken,
         }

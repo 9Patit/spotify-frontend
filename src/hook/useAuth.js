@@ -9,7 +9,7 @@ const useAuth = (code) => {
   
   useEffect(() => {
     axios
-      .post("https://spotify-server-1.onrender.com/login", {
+      .post("http://localhost:3001/login", {
         code,
       })
       .then((res) => {
@@ -28,7 +28,7 @@ const useAuth = (code) => {
     if (!refreshToken || !expiresIn) return;
     const interval = setTimeout(() => {
       axios
-        .post("https://spotify-server-1.onrender.com/refresh"
+        .post("http://localhost:3001/refresh"
         , {
           refreshToken,
         })
