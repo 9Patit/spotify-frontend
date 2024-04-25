@@ -19,7 +19,8 @@ function Addtoplaylist({selectedTrack,selectedTrackId,onClose}) {
     const fetchPlaylist = async () => {
       try {
         const responseRefresh = await axios.post(
-          "http://localhost:3001/refresh",
+          "https://spotify-server-1.onrender.com/refresh"
+
           {
             refreshToken,
           }
@@ -49,7 +50,7 @@ useEffect(() => {
   const addTrackToPlaylist = async () => {
     try {
       const responseRefresh = await axios.post(
-        "http://localhost:3001/refresh",
+        "https://spotify-server-1.onrender.com/refresh",
         {
           refreshToken,
         }
