@@ -19,7 +19,7 @@ function Addtoplaylist({selectedTrack,selectedTrackId,onClose}) {
     const fetchPlaylist = async () => {
       try {
         const responseRefresh = await axios.post(
-          "https://spotify-server-1.onrender.com/refresh"
+          "https://spotify-server-1.onrender.com/refresh",
 
           {
             refreshToken,
