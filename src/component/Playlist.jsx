@@ -15,7 +15,7 @@ const Playlist = ({ onClose }) => {
     const fetchAccessToken = async () => {
       try {
         const responseRefresh = await axios.post(
-          "http://localhost:3001/refresh",
+          "https://spotify-server-1.onrender.com/refresh",
           {
             refreshToken,
           }
