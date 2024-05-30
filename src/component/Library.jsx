@@ -8,10 +8,9 @@ import { PlaylistContext } from "../context/PlaylistContext";
 const Library = ({ handlePlaylist }) => {
   const { refreshToken } = useAuthContext();
   const [playlists, setPlaylists] = useState(null);
-  console.log("ข้อมูลในPlaylist:",playlists);
-  const [isModalOpen, setIsModalOpen] = useState(false);  
+  console.log("ข้อมูลในPlaylist:", playlists);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { setPlaylist } = useContext(PlaylistContext);
- 
 
   useEffect(() => {
     const fetchPlaylist = async () => {
@@ -116,62 +115,64 @@ const Library = ({ handlePlaylist }) => {
   };
 
   return (
-    <div className="w-[360px] h-[297px] bg-[#121212] flex flex-col rounded-md mt-[10px] text-[#A7A7A7] p-4 ">
-      <div className="text-xl flex justify-between item-center h-[30px]">
+    <div className="w-full h-full bg-[#121212] flex flex-col rounded-md  text-[#A7A7A7]  ">
+      <div className="text-xl flex justify-between item-center h-[10%] pl-[7%] pt-[5%]">
         <span>library</span>
         <button
           type="button"
-          className="flex justify-center item-center h-[30px] p-0 w-[30px]  ml-[230px] rounded-full"
+          className="flex justify-center item-center h-[30px] p-0 w-[30px]   rounded-full mr-[5%]"
           onClick={openModal}
         >
           +
         </button>
 
         {isModalOpen && (
-          <div className="modal">            
-            <Playlist              
+          <div className="modal">
+            <Playlist
               onClose={() => {
-                closeModal();                
+                closeModal();
                 refreshPlaylist();
               }}
             />
           </div>
         )}
       </div>
-      {playlists && playlists.items && (
-        <div className="pt-3 overflow-y-auto max-h-96">
-          {playlists.items.map((item) => (
-            <div
-              key={item.id}
-              className=" cursor-pointer hover:bg-[#2A2A2A] "
-              onClick={() => {
-                setPlaylist(JSON.parse(JSON.stringify(item)));
-                handlePlaylist();
-              }}
-            >
-              <div className=" flex justify-between">
-                <div>
-                  <h2>{item.name}</h2>
-                  <h2>{item.owner.display_name}</h2>
-                </div>
-                <div>
-                  <button
-                    className="
-                  mt-[10px] mr-[5px] 
+      <div>
+        {playlists && playlists.items && (
+          <div className="pt-3 pl-[7%] overflow-y-auto h-full">
+            {playlists.items.map((item) => (
+              <div
+                key={item.id}
+                className=" cursor-pointer hover:bg-[#2A2A2A] hover:rounded-lg "
+                onClick={() => {
+                  setPlaylist(JSON.parse(JSON.stringify(item)));
+                  handlePlaylist();
+                }}
+              >
+                <div className=" flex justify-between ">
+                  <div>
+                    <h2>{item.name}</h2>
+                    <h2>{item.owner.display_name}</h2>
+                  </div>
+                  <div>
+                    <button
+                      className="
+                  mt-[10px] mr-4 
                   flex justify-center 
                   item-center h-[30px] 
-                  p-0 w-[30px]  ml-[100px]
+                  p-0 w-[30px]  
                   rounded-full bg-[#121212]"
-                    onClick={() => deletePlaylist(item.id)}
-                  >
-                    -
-                  </button>
+                      onClick={() => deletePlaylist(item.id)}
+                    >
+                      -
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

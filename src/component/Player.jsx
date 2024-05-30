@@ -4,7 +4,7 @@ import { TrackContext } from "../context/TrackContext";
 const Player = () => {
   const {track} = useContext(TrackContext);
   return (
-    <section className="mt-[5px]  " >
+    <section  className="mt-[5px] ml-[5px] mr-[5px]">
       <iframe
         title="Spotify Embed: Recommendation Playlist "          
         src={`https://open.spotify.com/embed/track/${track}?utm_source=generator`}      

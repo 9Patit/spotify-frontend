@@ -2,8 +2,6 @@ import Logo from "../img/Logo.png";
 
 const clientId = "e0e2d01268884c5c86bef49f2533af70";
 
-
-
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=https://spotify-frontend-beta.vercel.app&scope=streaming%20user-read-email%20playlist-modify-public%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
 
 const Login = () => {
@@ -21,7 +19,7 @@ const Login = () => {
         </a>
       </div>
       <div>
-        <p>
+        <p className="text-[#000000]">
           You can use <br />
           User: <b>test.clonespotify@gmail.com</b>
           <br />

@@ -6,7 +6,7 @@ const useAuth = (code) => {
   const { refreshToken, setRefreshToken } = useAuthContext();
   const [accessToken, setAccessToken] = useState();
   const [expiresIn, setExpiresIn] = useState();
-  
+
   useEffect(() => {
     axios
       .post("https://spotify-server-1.onrender.com/login", {
@@ -28,8 +28,7 @@ const useAuth = (code) => {
     if (!refreshToken || !expiresIn) return;
     const interval = setTimeout(() => {
       axios
-        .post("https://spotify-server-1.onrender.com/refresh"
-        , {
+        .post("https://spotify-server-1.onrender.com/refresh", {
           refreshToken,
         })
         .then((res) => {

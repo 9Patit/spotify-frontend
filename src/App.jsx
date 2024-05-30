@@ -13,7 +13,7 @@ function App() {
     <AuthProvider>
       <PlaylistProvider>
         <TrackProvider>
-          <Dashboard code={code} />
+          <Dashboard code={code} />         
         </TrackProvider>
       </PlaylistProvider>
     </AuthProvider>

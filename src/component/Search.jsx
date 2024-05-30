@@ -13,7 +13,7 @@ const Search = () => {
   const { setTrack } = useContext(TrackContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedTrack, setSelectedTrack] = useState("");
-  const [selectedTrackId, setSelectedTrackId] = useState("");   
+  const [selectedTrackId, setSelectedTrackId] = useState("");
   const minutes = (milliseconds) => {
     // แปลง milliseconds เป็นนาทีและวินาที
     const totalSeconds = milliseconds / 1000;
@@ -45,8 +45,8 @@ const Search = () => {
           },
         });
 
-        setSearchResults(response.data.tracks.items.slice(0, 5));
-        console.log("เพลง", searchResults);
+        setSearchResults(response.data.tracks.items.slice(0, 7));
+        console.log("เพลง", searchResults); 
       } catch (error) {
         console.error("เกิดข้อผิดพลาด:", error);
       }
@@ -61,7 +61,7 @@ const Search = () => {
   };
 
   return (
-    <div className=" m-[10px] ">
+    <div className=" m-[10px] overflow-hidden">
       <input
         type="text"
         placeholder="What do you want to play?"
